@@ -1,0 +1,66 @@
+html{
+			font-family: Trebuchet MS;
+		}
+		.alert {
+			padding: 13px;
+			color: white;
+			width: 52%;
+			margin-top: 10px;
+		}
+		.closebtn {
+			margin-left: 15px;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size: 22px;
+			line-height: 20px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+		.closebtn:hover {
+			color: black;
+		}
+		
+		
+		
+		.buttonSbmt{
+			margin-top: 5px;
+			padding:9px;
+			border-radius: 5px;
+			border: none;
+			background: crimson;
+			font-family: Trebuchet MS;
+			font-weight: bold;
+			color: white;
+			transition: 0.1s;
+			width: 100px;
+			border-bottom: 5px solid #bd0f32;
+		  }
+
+		.buttonSbmt:disabled {
+			border-bottom: 2px solid #bd0f32;
+			color: white;
+		}
+		  
+		 .naughtyBtnGoLeft{
+			margin-left: -150px;
+		  }
+		 .naughtyBtnGoRight{
+			margin-right: -150px;
+		  }
+		  
+		  
+		  .inputArea{
+			padding: 9px;
+			width: 300px;
+			margin-bottom: 5px;
+			border: 2px solid grey;
+			border-radius: 4px;
+			outline: none;
+		  }
+		  
+		.inputAreaAlert {
+			border: 2px solid crimson;
+			border-radius: 4px;
+			box-shadow: inset 0px 0px 4px #dc143cb3;
+		}
