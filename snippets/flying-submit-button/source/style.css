@@ -1,4 +1,4 @@
-html{
+		html{
 			font-family: Trebuchet MS;
 		}
 		.alert {
@@ -64,3 +64,5 @@ html{
 			border-radius: 4px;
 			box-shadow: inset 0px 0px 4px #dc143cb3;
 		}
+		
+		a{color: crimson;}
