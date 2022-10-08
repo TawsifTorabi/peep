@@ -1,8 +1,12 @@
-    var button = document.getElementById('buttonSbmt');
+		
+		var button = document.getElementById('buttonSbmt');
 		var nameinput = document.getElementById('name');
 		var email = document.getElementById('email');
 		var pass = document.getElementById('pass');
 		var confpass = document.getElementById('confpass');
+		
+		button.setAttribute("onmouseover","flyAway()");
+		button.setAttribute("disabled","");
 		
 		var InputArr = [nameinput, email, pass, confpass];
 		
@@ -14,8 +18,6 @@
 				Validate();
 			});
 		}
-		
-	
 		
 		function resetButtonStyle(){
 			button.classList.remove("naughtyBtnGoRight");
@@ -56,7 +58,7 @@
 		
 		
 		function Validate(){
-			var validated = 0;
+			let validated = 0;
 			if(nameinput.value.length > 0){
 				//First Check if full name is entered
 				if(nameinput.value.length < 4){
@@ -65,7 +67,7 @@
 				}else{
 					nameinput.classList.remove("inputAreaAlert");
 					notification.parentElement.style.display= 'none';
-					validated+1;
+					validated++;
 				}
 			}
 			
@@ -74,7 +76,7 @@
 				if(email.value.split('@').length == 2){
 					email.classList.remove("inputAreaAlert");
 					notification.parentElement.style.display= 'none';
-					validated+1;
+					validated++;
 				}else{
 					formDisabled("Input Correct Email address");
 					email.classList.add("inputAreaAlert");
@@ -92,8 +94,7 @@
 							//Check If password and retype password Matches
 							pass.classList.remove("inputAreaAlert");
 							confpass.classList.remove("inputAreaAlert");
-							validated+1;
-							formEnabled("Green Light! Green Light!");
+							validated++;
 						}else{
 							//If password does not matches
 							formDisabled("Password Mismatch");
@@ -108,6 +109,10 @@
 					pass.classList.add("inputAreaAlert");
 				}
 			}
+			console.log(validated);
+			
+			if(validated == 3){
+				//All Three Inputs Validated
+				formEnabled("Green Light! Green Light!");
+			}
 		}
-		
-
