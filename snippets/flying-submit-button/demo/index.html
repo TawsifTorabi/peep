@@ -38,12 +38,13 @@
 			color: white;
 			transition: 0.1s;
 			width: 100px;
+			border-bottom: 5px solid #bd0f32;
 		  }
-		  .buttonSbmt:disabled{
-			background: #180188;
+
+		.buttonSbmt:disabled {
+			border-bottom: 2px solid #bd0f32;
 			color: white;
-		  }
-		  
+		}
 		  
 		 .naughtyBtnGoLeft{
 			margin-left: -150px;
@@ -67,6 +68,8 @@
 			border-radius: 4px;
 			box-shadow: inset 0px 0px 4px #dc143cb3;
 		}
+		
+		a{color: crimson;}
 		</style>
 	</head>
 	
@@ -78,13 +81,11 @@
 				<h3 style="color: crimson; margin: unset;">We're here to</h3> 
 				<h1 style="color: crimson; margin: unset;">annoy you.</h1>
 				</br>
-				<form>
 				<input type="text" autocomplete="off" placeholder="Name..." name="name" class="inputArea" id="name"/></br>
 				<input type="text" autocomplete="off" placeholder="Email..." name="email" class="inputArea" id="email"/></br>
 				<input type="password" autocomplete="off" placeholder="Password..." name="pass" class="inputArea" id="pass"/></br>
 				<input type="password" autocomplete="off" placeholder="Retype Password..." name="pass" class="inputArea" id="confpass"/></br>
 				<button type="submit" name="submit" id="buttonSbmt" class="buttonSbmt">Submit</button>
-				</form>
 				</br>
 				<div id="notificDiv" style="display: none; background: crimson; text-align: center;" class="alert">
 				  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -92,27 +93,36 @@
 				</div>
 			</div>
 		</div>
-		
+		<div style="height: 100px;"></div>
+		<div style="margin-left:-36px; text-align: center; color: crimson;">
+			<a href="https://github.com/TawsifTorabi/peep/blob/main/snippets/flying-submit-button/source">
+			<svg xmlns="http://www.w3.org/2000/svg" style="fill: crimson; vertical-align: middle;" width="auto" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 6c-3.313 0-6 2.686-6 6 0 2.651 1.719 4.9 4.104 5.693.3.056.396-.13.396-.289v-1.117c-1.669.363-2.017-.707-2.017-.707-.272-.693-.666-.878-.666-.878-.544-.373.041-.365.041-.365.603.042.92.619.92.619.535.917 1.403.652 1.746.499.054-.388.209-.652.381-.802-1.333-.152-2.733-.667-2.733-2.965 0-.655.234-1.19.618-1.61-.062-.153-.268-.764.058-1.59 0 0 .504-.161 1.65.615.479-.133.992-.199 1.502-.202.51.002 1.023.069 1.503.202 1.146-.776 1.648-.615 1.648-.615.327.826.121 1.437.06 1.588.385.42.617.955.617 1.61 0 2.305-1.404 2.812-2.74 2.96.216.186.412.551.412 1.111v1.646c0 .16.096.347.4.288 2.383-.793 4.1-3.041 4.1-5.691 0-3.314-2.687-6-6-6z"/></svg>
+			Source Code on Github</a> 
+			<a href="https://tawsiftorabi.github.io/peep/">
+			<svg xmlns="http://www.w3.org/2000/svg" style="fill: crimson; vertical-align: middle;" width="auto" height="24" viewBox="0 0 24 24"><path d="M13.427 3.021h-7.427v-3.021l-6 5.39 6 5.61v-3h7.427c3.071 0 5.561 2.356 5.561 5.427 0 3.071-2.489 5.573-5.561 5.573h-7.427v5h7.427c5.84 0 10.573-4.734 10.573-10.573s-4.733-10.406-10.573-10.406z"/></svg>
+			 Back to Peep</a>
+		</div>
 		<script>
+		
 		var button = document.getElementById('buttonSbmt');
 		var nameinput = document.getElementById('name');
 		var email = document.getElementById('email');
 		var pass = document.getElementById('pass');
 		var confpass = document.getElementById('confpass');
 		
-		nameinput.addEventListener("keyup", function(){
-			Validate();
-		});
-		email.addEventListener("keyup", function(){
-			Validate();
-		});
-		pass.addEventListener("keyup", function(){
-			Validate();
-		}); 
-		confpass.addEventListener("keyup", function(){
-			Validate();
-		});
+		button.setAttribute("onmouseover","flyAway()");
+		button.setAttribute("disabled","");
 		
+		var InputArr = [nameinput, email, pass, confpass];
+		
+		for(var i=0; i < InputArr.length; i++){
+			InputArr[i].addEventListener("keyup", function(){
+				Validate();
+			});
+			InputArr[i].addEventListener("change", function(){
+				Validate();
+			});
+		}
 		
 		function resetButtonStyle(){
 			button.classList.remove("naughtyBtnGoRight");
@@ -121,12 +131,12 @@
 		}
 
 		function flyAway(){
-			if(button.classList.contains("naughtyBtnGoLeft") == false){   
-				button.classList.add("naughtyBtnGoLeft");
-				button.classList.remove("naughtyBtnGoRight");
-			}else{
+			if(button.classList.contains("naughtyBtnGoRight") == false){   
 				button.classList.remove("naughtyBtnGoLeft");
 				button.classList.add("naughtyBtnGoRight");
+			}else{
+				button.classList.add("naughtyBtnGoLeft");
+				button.classList.remove("naughtyBtnGoRight");
 			}
 		}
 
@@ -146,9 +156,14 @@
 			button.setAttribute("disabled","");
 		}
 		
+		document.onload= function(){
+			console.log('Loaded!');
+			Validate();
+		};
+		
 		
 		function Validate(){
-			var validated = 0;
+			let validated = 0;
 			if(nameinput.value.length > 0){
 				//First Check if full name is entered
 				if(nameinput.value.length < 4){
@@ -157,7 +172,7 @@
 				}else{
 					nameinput.classList.remove("inputAreaAlert");
 					notification.parentElement.style.display= 'none';
-					validated+1;
+					validated++;
 				}
 			}
 			
@@ -166,7 +181,7 @@
 				if(email.value.split('@').length == 2){
 					email.classList.remove("inputAreaAlert");
 					notification.parentElement.style.display= 'none';
-					validated+1;
+					validated++;
 				}else{
 					formDisabled("Input Correct Email address");
 					email.classList.add("inputAreaAlert");
@@ -182,10 +197,9 @@
 						//If Retype Password value is more than 0, the user started typing.
 						if(pass.value == confpass.value){
 							//Check If password and retype password Matches
-							formEnabled("Password Matched!");
 							pass.classList.remove("inputAreaAlert");
 							confpass.classList.remove("inputAreaAlert");
-							validated+1;
+							validated++;
 						}else{
 							//If password does not matches
 							formDisabled("Password Mismatch");
@@ -200,10 +214,13 @@
 					pass.classList.add("inputAreaAlert");
 				}
 			}
+			console.log(validated);
+			
+			if(validated == 3){
+				//All Three Inputs Validated
+				formEnabled("Green Light! Green Light!");
+			}
 		}
-		
-
-
 		</script>
 	</body>
 </html>
