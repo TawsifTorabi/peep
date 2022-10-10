@@ -1,4 +1,3 @@
-		
 		var button = document.getElementById('buttonSbmt');
 		var nameinput = document.getElementById('name');
 		var email = document.getElementById('email');
@@ -20,18 +19,18 @@
 		}
 		
 		function resetButtonStyle(){
-			button.classList.remove("naughtyBtnGoRight");
-			button.classList.remove("naughtyBtnGoLeft");
+			button.style.removeProperty("margin-right");
+			button.style.removeProperty("margin-left");
 			button.removeAttribute("disabled","");
 		}
 
 		function flyAway(){
-			if(button.classList.contains("naughtyBtnGoRight") == false){   
-				button.classList.remove("naughtyBtnGoLeft");
-				button.classList.add("naughtyBtnGoRight");
+			if(button.style.marginRight == false){   
+				button.style.removeProperty("margin-left");
+				button.style.marginRight = "-"+((Math.random()*200)+70)+"px";
 			}else{
-				button.classList.add("naughtyBtnGoLeft");
-				button.classList.remove("naughtyBtnGoRight");
+				button.style.removeProperty("margin-right");
+				button.style.marginLeft = "-"+((Math.random()*200)+80)+"px";
 			}
 		}
 
