@@ -1,117 +1,117 @@
-		var button = document.getElementById('buttonSbmt');
-		var nameinput = document.getElementById('name');
-		var email = document.getElementById('email');
-		var pass = document.getElementById('pass');
-		var confpass = document.getElementById('confpass');
-		
-		button.setAttribute("onmouseover","flyAway()");
-		button.setAttribute("disabled","");
-		
-		var InputArr = [nameinput, email, pass, confpass];
-		
-		for(var i=0; i < InputArr.length; i++){
-			InputArr[i].addEventListener("keyup", function(){
-				Validate();
-			});
-			InputArr[i].addEventListener("change", function(){
-				Validate();
-			});
-		}
-		
-		function resetButtonStyle(){
-			button.style.removeProperty("margin-right");
-			button.style.removeProperty("margin-left");
-			button.removeAttribute("disabled","");
-		}
+var button = document.getElementById('buttonSbmt');
+var nameinput = document.getElementById('name');
+var email = document.getElementById('email');
+var pass = document.getElementById('pass');
+var confpass = document.getElementById('confpass');
 
-		function flyAway(){
-			if(button.style.marginRight == false){   
-				button.style.removeProperty("margin-left");
-				button.style.marginRight = "-"+((Math.random()*200)+70)+"px";
-			}else{
-				button.style.removeProperty("margin-right");
-				button.style.marginLeft = "-"+((Math.random()*200)+80)+"px";
-			}
-		}
+button.setAttribute("onmouseover","flyAway()");
+button.setAttribute("disabled","");
 
-		function formEnabled(msg){
-			notificDiv.style.display = "inline-block";
-			notificDiv.style.background = "limegreen";
-			notification.innerHTML = msg;
-			button.removeAttribute("onmouseover");
-			resetButtonStyle();
+var InputArr = [nameinput, email, pass, confpass];
+
+for(var i=0; i < InputArr.length; i++){
+	InputArr[i].addEventListener("keyup", function(){
+		Validate();
+	});
+	InputArr[i].addEventListener("change", function(){
+		Validate();
+	});
+}
+
+function resetButtonStyle(){
+	button.style.removeProperty("margin-right");
+	button.style.removeProperty("margin-left");
+	button.removeAttribute("disabled","");
+}
+
+function flyAway(){
+	if(button.style.marginRight == false){   
+		button.style.removeProperty("margin-left");
+		button.style.marginRight = "-"+((Math.random()*200)+70)+"px";
+	}else{
+		button.style.removeProperty("margin-right");
+		button.style.marginLeft = "-"+((Math.random()*200)+80)+"px";
+	}
+}
+
+function formEnabled(msg){
+	notificDiv.style.display = "inline-block";
+	notificDiv.style.background = "limegreen";
+	notification.innerHTML = msg;
+	button.removeAttribute("onmouseover");
+	resetButtonStyle();
+}
+
+function formDisabled(msg){
+	notificDiv.style.display = "inline-block";
+	notification.innerHTML = msg;
+	notificDiv.style.background = "crimson";
+	button.setAttribute("onmouseover","flyAway()");
+	button.setAttribute("disabled","");
+}
+
+document.onload= function(){
+	console.log('Loaded!');
+	Validate();
+};
+
+
+function Validate(){
+	let validated = 0;
+	if(nameinput.value.length > 0){
+		//First Check if full name is entered
+		if(nameinput.value.length < 4){
+			formDisabled("Input Full Name");
+			nameinput.classList.add("inputAreaAlert");
+		}else{
+			nameinput.classList.remove("inputAreaAlert");
+			notification.parentElement.style.display= 'none';
+			validated++;
 		}
-		
-		function formDisabled(msg){
-			notificDiv.style.display = "inline-block";
-			notification.innerHTML = msg;
-			notificDiv.style.background = "crimson";
-			button.setAttribute("onmouseover","flyAway()");
-			button.setAttribute("disabled","");
+	}
+
+	if(email.value.length > 0){
+		//Check Email is correctly entered
+		if(email.value.split('@').length == 2){
+			email.classList.remove("inputAreaAlert");
+			notification.parentElement.style.display= 'none';
+			validated++;
+		}else{
+			formDisabled("Input Correct Email address");
+			email.classList.add("inputAreaAlert");
 		}
-		
-		document.onload= function(){
-			console.log('Loaded!');
-			Validate();
-		};
-		
-		
-		function Validate(){
-			let validated = 0;
-			if(nameinput.value.length > 0){
-				//First Check if full name is entered
-				if(nameinput.value.length < 4){
-					formDisabled("Input Full Name");
-					nameinput.classList.add("inputAreaAlert");
-				}else{
-					nameinput.classList.remove("inputAreaAlert");
-					notification.parentElement.style.display= 'none';
-					validated++;
-				}
-			}
-			
-			if(email.value.length > 0){
-				//Check Email is correctly entered
-				if(email.value.split('@').length == 2){
-					email.classList.remove("inputAreaAlert");
-					notification.parentElement.style.display= 'none';
-					validated++;
-				}else{
-					formDisabled("Input Correct Email address");
-					email.classList.add("inputAreaAlert");
-				}
-			}
-			
-			if(pass.value.length > 0){
-				if(pass.value.length > 8){
-					//If Password Value is longer than 8
+	}
+
+	if(pass.value.length > 0){
+		if(pass.value.length > 8){
+			//If Password Value is longer than 8
+			pass.classList.remove("inputAreaAlert");
+			notification.parentElement.style.display= 'none';
+			if(confpass.value.length > 0){
+				//If Retype Password value is more than 0, the user started typing.
+				if(pass.value == confpass.value){
+					//Check If password and retype password Matches
 					pass.classList.remove("inputAreaAlert");
-					notification.parentElement.style.display= 'none';
-					if(confpass.value.length > 0){
-						//If Retype Password value is more than 0, the user started typing.
-						if(pass.value == confpass.value){
-							//Check If password and retype password Matches
-							pass.classList.remove("inputAreaAlert");
-							confpass.classList.remove("inputAreaAlert");
-							validated++;
-						}else{
-							//If password does not matches
-							formDisabled("Password Mismatch");
-							confpass.classList.add("inputAreaAlert");
-							
-						}
-					}
+					confpass.classList.remove("inputAreaAlert");
+					validated++;
+				}else{
+					//If password does not matches
+					formDisabled("Password Mismatch");
+					confpass.classList.add("inputAreaAlert");
+
 				}
-				
-				if(pass.value.length <= 8){
-					formDisabled("Password Should be more than 8");
-					pass.classList.add("inputAreaAlert");
-				}
-			}
-			console.log(validated);
-			
-			if(validated == 3){
-				//All Three Inputs Validated
-				formEnabled("Green Light! Green Light!");
 			}
 		}
+
+		if(pass.value.length <= 8){
+			formDisabled("Password Should be more than 8");
+			pass.classList.add("inputAreaAlert");
+		}
+	}
+	console.log(validated);
+
+	if(validated == 3){
+		//All Three Inputs Validated
+		formEnabled("Green Light! Green Light!");
+	}
+}
