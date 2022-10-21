@@ -1,0 +1,36 @@
+var today_date = new Date().getDate();
+			console.log(today_date);
+			var tips = [
+			'Use A Hair Dryer To Preheat A Pizza If You Don\'t Have A Microwave 🍕',
+			'Use Plastic Wrap As A Waterproof Phone Case ♠',
+			'The older you get, the better you get, unless you’re a banana. 🍌',
+			'Looks like you\'ve been missing a lot of work lately. 🍳',
+			'I used to sell furniture for a living. The trouble was, it was my own. 🤞',
+			'I never feel more alone than when I’m trying to put sunscreen on my back.',
+			'Common sense is like deodorant. The people who need it most never use it.',
+			'If I’m not back in five minutes, just wait longer.',
+			'I’m at a place in my life when errands are starting to count as going out.',
+			'As you get older, three things happen. The first is your memory goes, and I can’t remember the other two.',
+			'At a job interview, tell them you’re willing to give 110 percent. Unless the job is a statistician.',
+			'A day without sunshine is like, you know, night.',
+			'Put Earplugs In Your Nose To Make It Harder To Breathe 🕶',
+			'Use Old Keyboard When You Are Short Of Hangers 🥼',
+			'Secure Your Lunch With A Padlock 🔒',
+			'Don\'t Waste Money On A Can Of Air, Just Wash Your Dusty Motherboard With Your Dishes ✨',
+			'Use The Money That\'s Always In The Banana Stand To Get Dinner When You Are Broke 🤦‍♂️',
+			'Sign All Of Your Blank Checks Now To Save Time Writing Future Checks ✋',
+			'If You See Someone Crying, Ask If It Is Because Of Their Haircut 👼',
+			'Cut Your Tennis Balls In Half To Store Two More Balls In Each Can, Saving Space 🤞',
+			'Take A Selfie Through A Toilet Roll Tube And Pretend You\'re The Moon 🏳',
+			'Keep Cake Moist By Eating It All In One Sitting 🎂',
+			'Use Laptop Chargers To Heat Snacks Up 💻🔌',
+			'Accept who you are. Unless you’re a serial killer.',
+			'To call you stupid would be an insult to stupid people!',
+			'Why do they call it rush hour when nothing moves?',
+			'I don’t have to take this abuse from you; I’ve got hundreds of people dying to abuse me.',
+			'I grew up with six brothers. That\'s how I learned to dance: waiting for the bathroom.',
+			'Woke up today. It was terrible.',
+			'Anyone who lives within their means suffers from a lack of imagination.',
+			'I like my money where I can see it: hanging in my closet.'
+			];
+			document.getElementById('TODtip').innerHTML = (tips[today_date-1]);
