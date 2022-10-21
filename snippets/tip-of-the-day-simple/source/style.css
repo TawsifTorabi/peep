@@ -1,0 +1,51 @@
+html{
+			font-family: Trebuchet MS;
+		}
+
+		.TODtexts{
+			margin-left: 32px;
+		}
+		.TODmainCont {
+			background: white;
+			border-radius: 13px;
+			box-shadow: 0px 5px 9px #6868685c;
+			padding: 10px;
+			text-align: center;
+		}
+		.TODtitle {
+			font-family: Ink Free;
+			font-size: 32px;
+			vertical-align: top;
+			color: #ffbf00;
+			border-bottom: 3px dotted #ffbf00;
+			font-weight: bold;
+		}
+		.TODlogo {
+			position: absolute;
+			margin-top: -62px;
+			margin-left: -45px;
+			filter: drop-shadow(1px 0px 4px rgba(0, 0, 0, 0.31));
+		}
+		.TODtip {
+			color: #868491;
+			margin-top: 12px;
+			display: inline-block;
+			width: 87%;
+			margin-bottom: 13px;
+		}
+		
+		.footy {
+			color: white;
+			background: #ff8f00;
+			padding: 6px;
+			text-decoration: none;
+			border-radius: 6px;
+			border-top: 3px solid #ffcd00;
+			border-bottom: 3px solid #df6e1b;
+			margin-bottom: 6px;
+			padding-left: 18px;
+			padding-right: 18px;
+			font-size: 11px;
+			box-shadow: 0px 5px 9px #00000036;
+		}
+		
