@@ -1,0 +1,69 @@
+  
+<body>
+  <div class="line-1" id="typedtext"></div>
+</body>
+<style>
+html{
+  min-height: 100%;
+  overflow: hidden;
+}
+body{
+  height: calc(100vh - 8em);
+  padding: 4em;
+  color: white;
+  /*color: rgba(255,255,255,.75);*/
+  font-family: 'Anonymous Pro', monospace;  
+  /*background-color: rgb(25,25,25); */ 
+  background-color: black;
+}
+.line-1{
+    position: relative;
+    top: 50%;  
+    width: 100%;
+    margin: 0 auto;
+    
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+</style>
+<script>
+// set up text to print, each item in array is new line
+var aText = new Array(
+"মার্চ মাস থেকে</br> সে ঘুমে আছে</br></br>তার হিসাব থাকে না");
+var iSpeed = 40; // time delay of print out
+var iIndex = 0; // start printing array at this posision
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+ 
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+ 
+function typewriter()
+{
+ sContents =  ' ';
+ iRow = Math.max(0, iIndex-iScrollAt);
+ var destination = document.getElementById("typedtext");
+ 
+ while ( iRow < iIndex ) {
+  sContents += aText[iRow++] + '<br />';
+ }
+ destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+ if ( iTextPos++ == iArrLength ) {
+  iTextPos = 0;
+  iIndex++;
+  if ( iIndex != aText.length ) {
+   iArrLength = aText[iIndex].length;
+   setTimeout("typewriter()", 500);
+  }
+ } else {
+  setTimeout("typewriter()", iSpeed);
+ }
+}
+
+
+typewriter();
+</script>
