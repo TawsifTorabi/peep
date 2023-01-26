@@ -1,0 +1,73 @@
+
+<style>
+
+
+
+#preview-card
+{
+    position:relative;            
+}
+.name
+{
+    color: inherit;
+    font-weight:bold;    
+    position:relative;    
+    z-index:100;
+}
+.details
+{
+    color:#777;        
+    line-height:1.5em;    
+    background:#fff;    
+    border:solid 1px #ddd;      
+    position:absolute;
+    width:300px;
+    border-radius:3px;        
+    left:-10px;
+    top:-10px;
+    z-index:50;
+    padding:2em 10px 10px;
+    box-shadow:5px 5px 5px #888;
+	transition: 0.5s;
+	
+}
+.details img
+{
+    width:70px;    
+    float:right;
+    margin-top:-1em;
+}
+			
+			
+			@keyframes fadeIn {
+				to {
+					opacity: 3;
+					}
+			}		
+			@keyframes fadeOut {
+				to {
+					opacity: 0;
+					}
+			}			
+
+			.fade-in {
+			animation: fadeIn 0.4s ease-in 1 forwards;
+			opacity: 0;
+			}		
+			.fade-out {
+			animation: fadeOut 0.4s ease-in 1 forwards;
+			opacity: 1;
+			}		
+					
+
+</style>
+
+<span id="preview-card">
+  <label class="name" onmouseover="document.getElementById('devdet').style = 'display:inline;'" onmouseout="document.getElementById('devdet').style = 'display:none;'">Tawsif Torabi</label>
+  <span id="devdet" class="details fade-in" style="display:none;">
+    <img src="http://lh3.googleusercontent.com/-jpijNi_XBh4/AAAAAAAAAAI/AAAAAAAAB_0/P3R_olWI_KI/s512-c/photo.jpg" style="width:70px;float:right;margin-top:-1em;" alt="PC"/>        
+    Web Developer<br/>
+    Student, UIU<br/>
+    <a href="#">fb.com/tawsif.torabi</a>
+  </span>
+</span>
